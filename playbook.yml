@@ -1,0 +1,13 @@
+# playbook.yml
+---
+- hosts: servers
+  become: yes
+  tasks:
+    - name: deploy application container
+      docker_container:
+        image: apatil/devops-integration:latest
+        name: myapplication
+        state: started
+        auto_remove: true
+        ports:
+          - "8080:8081"
